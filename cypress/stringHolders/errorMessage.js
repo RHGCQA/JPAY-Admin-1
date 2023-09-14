@@ -24,8 +24,13 @@ var jpDepositErrorMessage = {
 }
 
 var manualDepositErrorMessage = {
-    manualDepositInvalidAccountNumber: "E-MERCHANT-404 - Merchant not found."
-
+    manualDepositInvalidAccountNumber: "E-MERCHANT-404 - Merchant not found.",
+    manualDepositMissingAccountNumber: "Account Number is required",
+    manualDepositMissingCurrency: "Currency is required",
+    manualDepositMissingAmount: "Amount is required",
+    manualDepositMissingBankName: "Bank Name is required",
+    manualDepositMissingMerchantNotes: "Notes is required",
+    manualDepositMissingAdminNotes: "Admin Notes is required",
 }
 
 module.exports = {loginErrorMessage , jpDepositErrorMessage, manualDepositErrorMessage };

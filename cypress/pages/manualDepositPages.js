@@ -60,6 +60,30 @@ class manualDepositTest {
       return cy.get('.my-2 > :nth-child(2)')
     }
 
+    getManualDepositMissingAccountNumberError(){
+      return cy.get('.error')
+    }
+
+    getManualDepositMissingCurrencyErrorMessage(){
+      return cy.get('.error')
+    }
+
+    getManualDepositMissingAmountErrorMessage(){
+      return cy.get('.error')
+    }
+
+    getManualDepositMissingBankNameErrorMessage(){
+      return cy.get('.error')
+    }
+
+    getManualDepositMissingMerchantNotesErrorMessage(){
+      return cy.get('.error')
+    }
+
+    getManualDepositMissingAdminNotesErrorMessage(){
+      return cy.get('.error')
+    }
+
 
 
 

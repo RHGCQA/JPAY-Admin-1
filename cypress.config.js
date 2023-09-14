@@ -6,6 +6,13 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
   },
-  viewportWidth: 1300,
-  viewportHeight: 800,
+  reporter: "./node_modules/@kanidjar/cypress-qatouch-reporter",
+  reporterOptions: {
+    "domain": "rhgc", 
+    "apiToken": "ce3f34014ec66f88e33de2079af283c35108eb7bc5fa4e59d13aa68608f581df", 
+    "projectKey": "REMe",
+    "testRunKey": "xEB5" 
+  },
+  viewportWidth: 1800,
+  viewportHeight: 1000,
 });

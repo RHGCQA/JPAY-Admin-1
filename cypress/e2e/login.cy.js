@@ -15,7 +15,7 @@ import {loginErrorMessage} from "../stringHolders/errorMessage"
 
     })
      
-   it("should Log In and Log out", () => {
+   it("[QATouch-5BmyvE] should Log In and Log out", () => {
       login.getEmailAddressField().type(emailAddress)
       login.getPasswordField().type(password)
       login.getloginButton().click()

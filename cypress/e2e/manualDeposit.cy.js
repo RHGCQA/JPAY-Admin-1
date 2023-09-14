@@ -25,6 +25,12 @@ const deposit = new manualDepositTest()
   let adminNotes = manualDepositValidCredentials.stageAdminNotes
   let addNewDepositSuccessMessage = ManualDepositSuccessMessage.successManualDeposit
   let invalidAccountErrorMessage = manualDepositErrorMessage.manualDepositInvalidAccountNumber
+  let missingAccountNumberError = manualDepositErrorMessage.manualDepositMissingAccountNumber
+  let missingCurrencyError = manualDepositErrorMessage.manualDepositMissingCurrency
+  let missingAmountError = manualDepositErrorMessage.manualDepositMissingAmount
+  let missingBankNameError = manualDepositErrorMessage.manualDepositMissingBankName
+  let missingMerchantNotesError = manualDepositErrorMessage.manualDepositMissingMerchantNotes
+  let missingAdminNotesError = manualDepositErrorMessage.manualDepositMissingAdminNotes
 
 
 describe("Go to Site", () => {
@@ -179,16 +185,129 @@ describe("Go to Site", () => {
         deposit.getAddNewManualDeposit().click({force : true})
         //deposit.getManualDepositAccountNumberField().type(accountNumber)
         deposit.getManualDepositAddNewModal().click()
-        deposit.getManualDepositCurrencyDropdown().select(gbp).should('have.value', gbp)
+        deposit.getManualDepositCurrencyDropdown().select(jpy).should('have.value', jpy)
         deposit.getmanualDepositAmountField().type(amount)
         deposit.getManualDepositBankNameField().type(bankName)
         deposit.getManualDepositMerchantNotesField().type(merchantNotes)
         deposit.getManualDepositAdminNotes().type(adminNotes)
         deposit.getManualDepositSaveButton().click()
-        deposit.getManualDepositAddNewSuccessMessage().contains(addNewDepositSuccessMessage)
+        deposit.getManualDepositMissingAccountNumberError().contains(missingAccountNumberError)
     })
 
-    
+    it("should create Manual Deposit with Missing Currency", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getAddNewManualDeposit().click({force : true})
+        deposit.getManualDepositAccountNumberField().type(accountNumber)
+        //deposit.getManualDepositAddNewModal().click()
+        //deposit.getManualDepositCurrencyDropdown().select(jpy).should('have.value', jpy)
+        deposit.getmanualDepositAmountField().type(amount)
+        deposit.getManualDepositBankNameField().type(bankName)
+        deposit.getManualDepositMerchantNotesField().type(merchantNotes)
+        deposit.getManualDepositAdminNotes().type(adminNotes)
+        deposit.getManualDepositSaveButton().click()
+        deposit.getManualDepositMissingCurrencyErrorMessage().contains(missingCurrencyError)
+    })
 
+    it("should create Manual Deposit with Missing Amount", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getAddNewManualDeposit().click({force : true})
+        deposit.getManualDepositAccountNumberField().type(accountNumber)
+        deposit.getManualDepositAddNewModal().click()
+        deposit.getManualDepositCurrencyDropdown().select(jpy).should('have.value', jpy)
+        //deposit.getmanualDepositAmountField().type(amount)
+        deposit.getManualDepositBankNameField().type(bankName)
+        deposit.getManualDepositMerchantNotesField().type(merchantNotes)
+        deposit.getManualDepositAdminNotes().type(adminNotes)
+        deposit.getManualDepositSaveButton().click()
+        deposit.getManualDepositMissingAmountErrorMessage().contains(missingAmountError)
+    })
+
+    it("should create Manual Deposit with Missing Bank Name", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getAddNewManualDeposit().click({force : true})
+        deposit.getManualDepositAccountNumberField().type(accountNumber)
+        deposit.getManualDepositAddNewModal().click()
+        deposit.getManualDepositCurrencyDropdown().select(jpy).should('have.value', jpy)
+        deposit.getmanualDepositAmountField().type(amount)
+        //deposit.getManualDepositBankNameField().type(bankName)
+        deposit.getManualDepositMerchantNotesField().type(merchantNotes)
+        deposit.getManualDepositAdminNotes().type(adminNotes)
+        deposit.getManualDepositSaveButton().click()
+        deposit.getManualDepositMissingBankNameErrorMessage().contains(missingBankNameError)
+    })
+
+    it("should create Manual Deposit with Missing Merchant Notes", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getAddNewManualDeposit().click({force : true})
+        deposit.getManualDepositAccountNumberField().type(accountNumber)
+        deposit.getManualDepositAddNewModal().click()
+        deposit.getManualDepositCurrencyDropdown().select(jpy).should('have.value', jpy)
+        deposit.getmanualDepositAmountField().type(amount)
+        deposit.getManualDepositBankNameField().type(bankName)
+        //deposit.getManualDepositMerchantNotesField().type(merchantNotes)
+        deposit.getManualDepositAdminNotes().type(adminNotes)
+        deposit.getManualDepositSaveButton().click()
+        deposit.getManualDepositMissingMerchantNotesErrorMessage().contains(missingMerchantNotesError)
+    })
+
+    it("should create Manual Deposit with Missing Admin Notes", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getAddNewManualDeposit().click({force : true})
+        deposit.getManualDepositAccountNumberField().type(accountNumber)
+        deposit.getManualDepositAddNewModal().click()
+        deposit.getManualDepositCurrencyDropdown().select(jpy).should('have.value', jpy)
+        deposit.getmanualDepositAmountField().type(amount)
+        deposit.getManualDepositBankNameField().type(bankName)
+        deposit.getManualDepositMerchantNotesField().type(merchantNotes)
+        //deposit.getManualDepositAdminNotes().type(adminNotes)
+        deposit.getManualDepositSaveButton().click()
+        deposit.getManualDepositMissingAdminNotesErrorMessage().contains(missingAdminNotesError)
+    })
+
+    it("should create Manual Deposit with Missing All Required Fields", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getAddNewManualDeposit().click({force : true})
+        deposit.getManualDepositSaveButton().click()
+        deposit.getManualDepositMissingAccountNumberError().contains(missingAccountNumberError)
+        deposit.getManualDepositMissingCurrencyErrorMessage().contains(missingCurrencyError)
+        deposit.getManualDepositMissingAmountErrorMessage().contains(missingAmountError)
+        deposit.getManualDepositMissingBankNameErrorMessage().contains(missingBankNameError)
+        deposit.getManualDepositMissingMerchantNotesErrorMessage().contains(missingMerchantNotesError)
+        deposit.getManualDepositMissingAdminNotesErrorMessage().contains(missingAdminNotesError)
+    })
+
+
+    it("should create Manual Deposit with Missing All Required Fields", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+
+    })
 
 })
