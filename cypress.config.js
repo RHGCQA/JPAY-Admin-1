@@ -11,7 +11,7 @@ module.exports = defineConfig({
     "domain": "rhgc", 
     "apiToken": "ce3f34014ec66f88e33de2079af283c35108eb7bc5fa4e59d13aa68608f581df", 
     "projectKey": "REMe",
-    "testRunKey": "xEB5" 
+    "testRunKey": "j2W9" 
   },
   viewportWidth: 1800,
   viewportHeight: 1000,

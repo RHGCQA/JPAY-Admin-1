@@ -21,6 +21,9 @@ var jpDepositErrorMessage = {
     jpDepositMerchantNotFoundAddNewButton: "E-DEPOSIT-010 - Merchant not found.",
     jpDepositInvalidTransferIDError: "E-DEPOSIT-500 - Transfer ID not found " + invalidTransferID + " UID: " + validUID,
     jpDepositInvalidUIDError: "E-DEPOSIT-500 - Transfer ID not found " + validTransferID + " UID: " + invalidUID,
+    jpDepositUpdateAllWithMissingMerchantNumber: "E-DEPOSIT-022 - Search filter is required to lift transactions.",
+    jpDepositSearchFieldIsRequired: "Search field is required.",
+    jpDepositSearchFieldIsInvalid: "E-DEPOSIT-023 - Search filter has no result.",
 }
 
 var manualDepositErrorMessage = {

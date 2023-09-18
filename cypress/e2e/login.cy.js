@@ -15,7 +15,7 @@ import {loginErrorMessage} from "../stringHolders/errorMessage"
 
     })
      
-   it("[QATouch-5BmyvE] should Log In and Log out", () => {
+   it("[QATouch-ajRX8e] should Log In and Log out", () => {
       login.getEmailAddressField().type(emailAddress)
       login.getPasswordField().type(password)
       login.getloginButton().click()
@@ -23,40 +23,40 @@ import {loginErrorMessage} from "../stringHolders/errorMessage"
       login.getSignOut().click()
   })
 
-    it("should Log in with invalid both email address and password", () => {
+    it("[QATouch-QG3M09] should Log in with invalid both email address and password", () => {
       login.getEmailAddressField().type(invalidEmailAddress)
       login.getPasswordField().type(invalidPassword)
       login.getloginButton().click()
       login.getInvalidPasswordErrorMessage().contains(loginError)
   })
 
-    it("should Log in with invalid password", () => {
+    it("[QATouch-B8JQlX] should Log in with invalid password", () => {
       login.getEmailAddressField().type(emailAddress)
       login.getPasswordField().type(invalidPassword)
       login.getloginButton().click()
       login.getInvalidPasswordErrorMessage().contains(loginError)
   })
 
-    it("should Log in with invalid email address", () => {
+    it("[QATouch-WE1R0K] should Log in with invalid email address", () => {
       login.getEmailAddressField().type(invalidEmailAddress)
       login.getPasswordField().type(password)
       login.getloginButton().click()
       login.getInvalidPasswordErrorMessage().contains(loginError)
   })
 
-    it("should Log in with missing email address", () => {
+    it("[QATouch-M7WQlk] should Log in with missing email address", () => {
       login.getPasswordField().type(password)
       login.getloginButton().click()
       login.getInvalidPasswordErrorMessage().contains(loginError)
   })
 
-    it("should Log in with missing password", () => {
+    it("[QATouch-8VeQ07] should Log in with missing password", () => {
       login.getEmailAddressField().type(emailAddress)
       login.getloginButton().click()
       login.getInvalidPasswordErrorMessage().contains(loginError)
   })
 
-    it("should Log in with missing both email address and password", () => {
+    it("[QATouch-DrxQ09] should Log in with missing both email address and password", () => {
       login.getloginButton().click()
       login.getInvalidPasswordErrorMessage().contains(loginError)
   })

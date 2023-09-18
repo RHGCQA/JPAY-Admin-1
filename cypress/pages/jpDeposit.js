@@ -157,6 +157,22 @@ class JPDepositTest {
     getJPDepositUpdateToCompletedButton(){
         return cy.get('.row.ml-2 > .d-flex > :nth-child(2)')
     }
+    getJPDepositSelectAllCheckbox(){
+        return cy.get('thead > tr > :nth-child(1) > input')
+    }
+    getJPDepositUpdateAllToCompletedMissingMerchantNumberErrorMessage(){
+        return cy.get('.my-2 > :nth-child(2)')
+    }
+    getJPDepositCloseFilterRequiredErrorMessageOKButton(){
+        return cy.get('#g-error-modal___BV_modal_footer_ > div > .btn')
+    }
+    getJPDepositSearchFieldRequiredErrorMessage(){
+        return cy.get('.error')
+    }
+    getJPDepositSearchFieldInvalidErrorMessage(){
+        return cy.get('.my-2 > :nth-child(2)')
+    }
+
 
 }
 module.exports = JPDepositTest
