@@ -1,4 +1,5 @@
 import LoginTest from "../pages/loginPages"
+import { date_today } from "../stringHolders/dateGenerator"
 import manualDepositTest from "../pages/manualDepositPages"
 import { validloginCredentials } from "../stringHolders/loginCredentials"
 import { manualDepositValidCredentials, manualDepositInvalidCredentials } from "../stringHolders/manualDepositCredentials"
@@ -8,11 +9,14 @@ import {manualDepositErrorMessage} from "../stringHolders/errorMessage"
 
 
 
+
 const login = new LoginTest()
 const deposit = new manualDepositTest()
+
   let emailAddress = validloginCredentials.stageEmailAddress
   let password = validloginCredentials.stagePassword
   let accountNumber = manualDepositValidCredentials.stageValidAccountNumber
+  let merchantName = manualDepositValidCredentials.stageValidMerchantName
   let invalidAccountNumber = manualDepositInvalidCredentials.stageInvalidAccountNumber
   let jpy = manualDepositValidCredentials.stageJPYCurrency
   let usd = manualDepositValidCredentials.stageUSDCurrency
@@ -31,6 +35,11 @@ const deposit = new manualDepositTest()
   let missingBankNameError = manualDepositErrorMessage.manualDepositMissingBankName
   let missingMerchantNotesError = manualDepositErrorMessage.manualDepositMissingMerchantNotes
   let missingAdminNotesError = manualDepositErrorMessage.manualDepositMissingAdminNotes
+  let txnNumberFilter = manualDepositValidCredentials.stageSearchTxnNumber
+  let merchantNumberFilter = manualDepositValidCredentials.stageSearchMerchantNumber
+  let merchantNameFilter = manualDepositValidCredentials.stageSearchMerchantName
+  let bankNameFilter = manualDepositValidCredentials.stageSearchBankName
+  let dateToday = date_today()
 
 
 describe("Go to Site", () => {
@@ -300,14 +309,180 @@ describe("Go to Site", () => {
         deposit.getManualDepositMissingAdminNotesErrorMessage().contains(missingAdminNotesError)
     })
 
-
-    it("should create Manual Deposit with Missing All Required Fields", () => {
+    it("should filter Transactions using Transaction Number", () => {
         login.getEmailAddressField().type(emailAddress)
         login.getPasswordField().type(password)
         login.getloginButton().click()
         deposit.getManualDepositFiat().click()
         deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getManualDepositSearchFilterField().type(accountNumber)
+        deposit.getManualDepositTransactionNumberonList().first().then($txnNumber => {
+            let manualDepTxnNumber = $txnNumber.text()
+            cy.log(manualDepTxnNumber)
+            cy.wrap(manualDepTxnNumber).as('manualDepTxnNumber')
+        })
+        deposit.getManualDepositResetButton().click()
+        cy.get('@manualDepTxnNumber').then(manualDepTxnNumber => { cy.log(manualDepTxnNumber)
+        deposit.getManualDepositSearchFilter().select(txnNumberFilter).should('have.value', txnNumberFilter )
+        deposit.getManualDepositSearchFilterField().type(manualDepTxnNumber)
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositCard().contains(manualDepTxnNumber)
+    })
+    })
 
+    it("should filter Transactions using Merchant Number", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getManualDepositSearchFilter().select(merchantNumberFilter).should('have.value', merchantNumberFilter)
+        deposit.getManualDepositSearchFilterField().type(accountNumber)
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositLastPage().click()
+        cy.wait(2000)
+        deposit.getManualDepositListCard().contains(accountNumber)
+    })
+
+    it("should filter Transactions using Merchant Name", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getManualDepositSearchFilter().select(merchantNameFilter).should('have.value', merchantNameFilter)
+        deposit.getManualDepositSearchFilterField().type(merchantName)
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositLastPage().click()
+        cy.wait(2000)
+        deposit.getManualDepositListCard().contains(merchantName)
+    })
+
+    it("should filter Transactions using Bank Name", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getManualDepositSearchFilter().select(bankNameFilter).should('have.value', bankNameFilter)
+        deposit.getManualDepositSearchFilterField().type(bankName)
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositLastPage().click()
+        cy.wait(2000)
+        deposit.getManualDepositListCard().contains(bankName)
+    })
+
+    it("should filter Transactions using JPY Currency", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositCurrencyFilter().select(jpy).should('have.value', jpy)
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositLastPage().click()
+        cy.wait(2000)
+        deposit.getManualDepositListCard().contains(jpy)
+    })
+
+    it("should filter Transactions using USD Currency", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositCurrencyFilter().select(usd).should('have.value', usd)
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositLastPage().click()
+        cy.wait(2000)
+        deposit.getManualDepositListCard().contains(usd)
+    })
+
+    it("should filter Transactions using EUR Currency", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositCurrencyFilter().select(eur).should('have.value', eur)
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositLastPage().click()
+        cy.wait(2000)
+        deposit.getManualDepositListCard().contains(eur)
+    })
+
+    it("should filter Transactions using PHP Currency", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositCurrencyFilter().select(php).should('have.value', php)
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositLastPage().click()
+        cy.wait(2000)
+        deposit.getManualDepositListCard().contains(php)
+    })
+
+    it("should filter Transactions using GBP Currency", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositCurrencyFilter().select(gbp).should('have.value', gbp)
+        deposit.getManualDepositFilterButton().click()
+        deposit.getManualDepositLastPage().click()
+        cy.wait(2000)
+        deposit.getManualDepositListCard().contains(gbp)
+    })
+
+    it("should filter Transactions using Date From", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getDateFromFilter().type(dateToday)
+        deposit.getManualDepositFilterButton().click()
+    })
+
+    it("should filter Transactions using Date To", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getDateToFilter().type(dateToday)
+        deposit.getManualDepositFilterButton().click()
+    })
+
+    it("should filter Transactions using Date To", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        deposit.getManualDepositFiat().click()
+        deposit.getManualDepositPage().click()
+        deposit.getManualDepositShowFilterMenu().click()
+        deposit.getDateFromFilter().type(dateToday)
+        deposit.getDateToFilter().type(dateToday)
+        deposit.getManualDepositFilterButton().click()
     })
 
 })

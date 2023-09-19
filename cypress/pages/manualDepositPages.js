@@ -84,6 +84,51 @@ class manualDepositTest {
       return cy.get('.error')
     }
 
+    getManualDepositShowFilterMenu(){
+      return cy.get('.float-right > a')
+    }
+
+    getManualDepositSearchFilter(){
+      return cy.get('.input-group-prepend > .form-control')
+    }
+
+    getManualDepositSearchFilterField(){
+      return cy.get('.input-group > input.form-control')
+    }
+
+    getManualDepositTransactionNumberonList(){
+      return cy.get('tbody > :nth-child(1) > :nth-child(3)')
+    }
+
+    getManualDepositResetButton(){
+      return cy.get('.card-footer > .btn-secondary')
+    }
+
+    getManualDepositFilterButton(){
+      return cy.get('.card-footer > .btn-info')
+    }
+
+    getManualDepositCard(){
+      return cy.get('.card-default')
+    }
+
+    getManualDepositLastPage(){
+      return cy.get(':nth-child(8) > .page-link')
+    }
+
+    getManualDepositCurrencyFilter(){
+    return cy.get(':nth-child(2) > .col-md-6 > .form-control')
+    }
+
+    getDateFromFilter(){
+      return cy.get(':nth-child(6) > :nth-child(1) > .form-control')
+    }
+
+    getDateToFilter(){
+      return cy.get(':nth-child(6) > :nth-child(2) > .form-control')
+    }
+
+
 
 
 

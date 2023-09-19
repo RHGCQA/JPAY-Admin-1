@@ -10,6 +10,10 @@ var manualDepositValidCredentials = {
     stageEURCurrency: "EUR",
     stagePHPCurrency: "PHP",
     stageGBPCurrency: "GBP",
+    stageSearchTxnNumber: "transaction_number",
+    stageSearchMerchantNumber: "merchant_number",
+    stageSearchMerchantName: "merchant_name",
+    stageSearchBankName: "bank_name",
     }
 
 var manualDepositInvalidCredentials = {
