@@ -13,6 +13,6 @@ module.exports = defineConfig({
     "projectKey": "REMe",
     "testRunKey": "j2W9" 
   },
-  viewportWidth: 1800,
-  viewportHeight: 1000,
+  viewportWidth: 2400,
+  viewportHeight: 1200,
 });
