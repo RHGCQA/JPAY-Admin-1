@@ -128,7 +128,7 @@ class JPDepositTest {
         return cy.get('.card-footer > .btn-secondary')
     }
     getJPDepositLastPageButton(){
-        return cy.get(':nth-child(8) > .page-link')
+        return cy.get(':nth-child(2) > .page-link')
     }
     getJPDepositStatusFilter(){
         return cy.get('.card-body > :nth-child(2) > :nth-child(1) > .form-control')

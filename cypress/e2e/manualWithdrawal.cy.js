@@ -34,7 +34,7 @@ describe("Go to Site", () => {
  
      })
       
-    it("should create Manual Withdrawal All JPY Currency", () => {
+    it.only("should create Manual Withdrawal All JPY Currency", () => {
        login.getEmailAddressField().type(emailAddress)
        login.getPasswordField().type(password)
        login.getloginButton().click()
@@ -42,8 +42,6 @@ describe("Go to Site", () => {
        withdrawal.getManualWithdrawalPage().click()
        withdrawal.getManualWithdrawalAddNewButton().click()
        withdrawal.getManualWithdrawalAccountNumberField().type(accountNumber)
-       withdrawal.getManualWithdrawalAddNewCard().click()
-       cy.wait(2000)
        withdrawal.getManualWithdarawalDebitCurrencyDropdown().select(jpyDebit).contains(jpy)
        withdrawal.getManualWithdrawalCurrencyDropdown().select(jpy).should('have.value', jpy)
        withdrawal.getManualWithdrawalAmountField().type(amount)
@@ -67,9 +65,9 @@ describe("Go to Site", () => {
         withdrawal.getManualWithdrawalFiat().click()
         withdrawal.getManualWithdrawalPage().click()
         withdrawal.getManualWithdrawalAddNewButton().click()
-        withdrawal.getManualWithdrawalAccountNumberField().type(accountNumber)
+        withdrawal.getManualWithdrawalAccountNumberField().type(accountNumber).click()
+        cy.wait(3000)
         withdrawal.getManualWithdrawalAddNewCard().click()
-        cy.wait(2000)
         withdrawal.getManualWithdarawalDebitCurrencyDropdown().select(usdDebit).contains(usd)
         withdrawal.getManualWithdrawalCurrencyDropdown().select(usd).should('have.value', usd)
         withdrawal.getManualWithdrawalAmountField().type(amount)

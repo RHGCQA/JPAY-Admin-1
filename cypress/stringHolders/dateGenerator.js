@@ -7,4 +7,4 @@ function date_today(){
 
     return today;
 }
-module.exports = {date_today};
+module.exports = {date_today};  

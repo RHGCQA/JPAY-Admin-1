@@ -211,7 +211,7 @@ describe("Go to Site", () => {
         deposit.getManualDepositPage().click()
         deposit.getAddNewManualDeposit().click({force : true})
         deposit.getManualDepositAccountNumberField().type(accountNumber)
-        //deposit.getManualDepositAddNewModal().click()
+        deposit.getManualDepositAddNewModal().click()
         //deposit.getManualDepositCurrencyDropdown().select(jpy).should('have.value', jpy)
         deposit.getmanualDepositAmountField().type(amount)
         deposit.getManualDepositBankNameField().type(bankName)

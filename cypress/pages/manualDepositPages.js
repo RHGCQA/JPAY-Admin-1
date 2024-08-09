@@ -113,7 +113,7 @@ class manualDepositTest {
     }
 
     getManualDepositLastPage(){
-      return cy.get(':nth-child(8) > .page-link')
+      return cy.get(':nth-child(2) > .page-link')
     }
 
     getManualDepositCurrencyFilter(){
