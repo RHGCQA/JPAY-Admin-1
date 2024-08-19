@@ -1,10 +1,10 @@
-import LoginTest from "../pages/loginPages"
-import JPWithdrawalTest from "../pages/jpWithdrawal"
-import MerchantsTest from "../pages/merchants"
-import MerchantAccountDetailsTest from "../pages/merchantAccountDetails"
-import {validloginCredentials, } from "../stringHolders/loginCredentials"
-import {JPWithdrawalValidCredentials} from "../stringHolders/credentials"
-import jpWithdraw from "../functions/apis"
+import LoginTest from "../../pages/loginPages"
+import JPWithdrawalTest from "../../pages/jpWithdrawal"
+import MerchantsTest from "../../pages/merchants"
+import MerchantAccountDetailsTest from "../../pages/merchantAccountDetails"
+import {validloginCredentials, } from "../../stringHolders/loginCredentials"
+import {JPWithdrawalValidCredentials} from "../../stringHolders/credentials"
+import jpWithdraw from "../../functions/apis"
 
  
 const login = new LoginTest()

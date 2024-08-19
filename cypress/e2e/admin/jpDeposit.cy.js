@@ -1,11 +1,11 @@
-import LoginTest from "../pages/loginPages"
-import { date_today } from "../stringHolders/dateGenerator"
-import { generateString } from "../stringHolders/randomStringGenerator"
-import { invalidloginCredentials, validloginCredentials } from "../stringHolders/loginCredentials"
-import JPDepositTest from "../pages/jpDeposit"
-import { JPDepositInvalidCredentials, JPDepositValidCredentials} from "../stringHolders/credentials"
-import { JPDepositSuccessMessage } from "../stringHolders/successMessage"
-import { jpDepositErrorMessage } from "../stringHolders/errorMessage"
+import LoginTest from "../../pages/loginPages"
+import { date_today } from "../../stringHolders/dateGenerator"
+import { generateString } from "../../stringHolders/randomStringGenerator"
+import { invalidloginCredentials, validloginCredentials } from "../../stringHolders/loginCredentials"
+import JPDepositTest from "../../pages/jpDeposit"
+import { JPDepositInvalidCredentials, JPDepositValidCredentials} from "../../stringHolders/credentials"
+import { JPDepositSuccessMessage } from "../../stringHolders/successMessage"
+import { jpDepositErrorMessage } from "../../stringHolders/errorMessage"
 
  const jpDeposit = new JPDepositTest()
  const login = new LoginTest()

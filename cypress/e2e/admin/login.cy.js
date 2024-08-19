@@ -1,6 +1,6 @@
-import LoginTest from "../pages/loginPages"
-import { invalidloginCredentials, validloginCredentials } from "../stringHolders/loginCredentials"
-import {loginErrorMessage} from "../stringHolders/errorMessage"
+import LoginTest from "../../pages/loginPages"
+import { invalidloginCredentials, validloginCredentials } from "../../stringHolders/loginCredentials"
+import {loginErrorMessage} from "../../stringHolders/errorMessage"
  
  const login = new LoginTest()
   let emailAddress = validloginCredentials.stageEmailAddress

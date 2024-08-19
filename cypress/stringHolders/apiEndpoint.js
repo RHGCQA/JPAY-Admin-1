@@ -1,7 +1,7 @@
 var jpay_stage = {
-    postTransfer: "https://api-stage.orientalwallet.com/api/v1/generate-transfer",
-    getDeposit:   "https://api-stage.orientalwallet.com/api/v1/deposit-receive?data=",
-    getDepositNoData: "https://api-stage.orientalwallet.com/api/v1/deposit-receive?",
+    generateTransfer: "https://api-stage.orientalwallet.com/api/v1/generate-transfer",
+    jpDeposit:   "https://api-stage.orientalwallet.com/api/v1/deposit-receive?data=",
+    jpDepositNoData: "https://api-stage.orientalwallet.com/api/v1/deposit-receive?",
     postWithdrawal: "https://api-stage.orientalwallet.com/api/v1/withdrawal-receive",
     jpWithdrawalbatch: "https://api-stage.orientalwallet.com/api/v1/jp-withdrawal/jp-create?",
     beeceptorUrl: "https://testingjpay101.free.beeceptor.com",

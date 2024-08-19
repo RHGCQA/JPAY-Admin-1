@@ -1,10 +1,10 @@
-import LoginTest from "../pages/loginPages"
-import { date_today } from "../stringHolders/dateGenerator"
-import manualDepositTest from "../pages/manualDepositPages"
-import { validloginCredentials } from "../stringHolders/loginCredentials"
-import { manualDepositValidCredentials, manualDepositInvalidCredentials } from "../stringHolders/manualDepositCredentials"
-import { ManualDepositSuccessMessage } from "../stringHolders/successMessage"
-import {manualDepositErrorMessage} from "../stringHolders/errorMessage"
+import LoginTest from "../../pages/loginPages"
+import { date_today } from "../../stringHolders/dateGenerator"
+import manualDepositTest from "../../pages/manualDepositPages"
+import { validloginCredentials } from "../../stringHolders/loginCredentials"
+import { manualDepositValidCredentials, manualDepositInvalidCredentials } from "../../stringHolders/manualDepositCredentials"
+import { ManualDepositSuccessMessage } from "../../stringHolders/successMessage"
+import {manualDepositErrorMessage} from "../../stringHolders/errorMessage"
 
 
 

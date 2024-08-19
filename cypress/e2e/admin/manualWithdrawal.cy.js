@@ -1,9 +1,9 @@
-import LoginTest from "../pages/loginPages"
-import exchangeRateTest from "../pages/exchangeRate"
-import { validloginCredentials } from "../stringHolders/loginCredentials"
-import manualWithdrawalTest from "../pages/manualWithdrawal"
-import { manualWithdrawalValidCredentials, manualWithdrawalInvalidCredentials } from "../stringHolders/manualWithdrawalCredentials"
-import { ManualDepositSuccessMessage, ManualWithdrawalSuccessMessage } from "../stringHolders/successMessage"
+import LoginTest from "../../pages/loginPages"
+import exchangeRateTest from "../../pages/exchangeRate"
+import { validloginCredentials } from "../../stringHolders/loginCredentials"
+import manualWithdrawalTest from "../../pages/manualWithdrawal"
+import { manualWithdrawalValidCredentials, manualWithdrawalInvalidCredentials } from "../../stringHolders/manualWithdrawalCredentials"
+import { ManualDepositSuccessMessage, ManualWithdrawalSuccessMessage } from "../../stringHolders/successMessage"
 
 const login = new LoginTest()
 const withdrawal = new manualWithdrawalTest()

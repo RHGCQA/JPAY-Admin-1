@@ -4,17 +4,18 @@ let merchantTxnNumber = "JPW" + generateString(10)
 
 
 var JPDepositValidCredentials = {
+    stagevalidSID: "509999232",
     stageValidAccountNumber: "8840451493",
-    stageValidMerchantName: "Kazuha Kadehara",
+    stageValidMerchantName: "kazuha_1291121",
     stageValidTransferID: "2624319",
     stageValidUID: "test_kazuha_0001",
     stageAdminNotes: "Sample Data",
-    stageValidAmount: Math.floor((Math.random(1000) * 99999) + 1),
-    stageJPYCurrency: "JPY",
-    stageUSDCurrency: "USD",
-    stageEURCurrency: "EUR",
-    stagePHPCurrency: "PHP",
-    stageGBPCurrency: "GBP",
+    validAmount: Math.floor((Math.random(1000) * 99999) + 1),
+    JPYCurrency: "JPY",
+    USDCurrency: "USD",
+    EURCurrency: "EUR",
+    PHPCurrency: "PHP",
+    GBPCurrency: "GBP",
     stageSearchPaymentID: "payment_id",
     stageSearchTxnNumber: "transaction_number",
     stageSearchMerchantNumber: "merchant_number",
@@ -30,9 +31,13 @@ var JPDepositValidCredentials = {
     stageAutoAPIType: "auto"
 }
 var JPDepositInvalidCredentials = {
-    stageInvalidAccountNumber: "8840451493INVALID",
-    stageInvalidTransferID: "2624319INVALID",
-    stageInvalidUID: "test_kazuha_0001INVALID",
+    invalidAccountNumber: "8840451493INVALID",
+    invalidTransferID: "2624319INVALID",
+    invalidUID: "test_kazuha_0001INVALID",
+    emptyUID: '',
+    emptyTransferID: '',
+    emptyPaymentID: '',
+    emptyAmount: '',
 }
 
 var JPWithdrawalValidCredentials = {
@@ -55,7 +60,6 @@ var JPWithdrawalValidCredentials = {
     merchantTxnNumber: merchantTxnNumber,
 }
 
-
 var JPWithdrawalInvalidCredentials = {
     invalidSignature: "09757fc63b6e3002cdecc37c3c9b5ff309039504f157735b60ff43e467c14ec",
     usedSignature: "f09757fc63b6e3002cdecc37c3c9b5ff309039504f157735b60ff43e467c14ec",
@@ -73,7 +77,9 @@ var JPWithdrawalInvalidCredentials = {
     negativeValue: "14000000"
 }
 
+
 module.exports =    {JPDepositValidCredentials,
                     JPDepositInvalidCredentials,
                     JPWithdrawalValidCredentials,
-                    JPWithdrawalInvalidCredentials};
+                    JPWithdrawalInvalidCredentials,
+                    JPDepositValidCredentials};
