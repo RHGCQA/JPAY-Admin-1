@@ -9,8 +9,9 @@ let payID = generateString(15);
 let payID2 = generateString(15);
 let paymentID = dateToday + payID
 let paymentID2 = dateToday + payID2
-
-let depositParams = jpay_stage.jpDeposit + paymentID + "/" + JPDepositValidCredentials.validAmount + "@" 
+let urlEnvironment = jpay_stage.jpDeposit
+let urlEnvironmentNoData = jpay_stage.jpDepositNoData
+let depositParams = urlEnvironment + paymentID + "/" + JPDepositValidCredentials.validAmount + "@" 
                     + JPDepositValidCredentials.stageValidUID + ";" +JPDepositValidCredentials.stageValidTransferID
 
 
@@ -40,7 +41,7 @@ it("should jp deposit", () => {
 it("should have uid", () => {
     cy.request({
         method: 'GET',
-        url: jpay_stage.jpDeposit + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
+        url: urlEnvironment + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
         + ' ' + ";" +JPDepositValidCredentials.stageValidTransferID,
         headers: {
             'Content-type': 'application/json'
@@ -63,7 +64,7 @@ it("should have uid", () => {
 it("should have amount", () => {
     cy.request({
         method: 'GET',
-        url: jpay_stage.jpDeposit + paymentID2 + "/" + '' + "@" 
+        url: urlEnvironment + paymentID2 + "/" + '' + "@" 
         + JPDepositValidCredentials.stageValidUID + ";" +JPDepositValidCredentials.stageValidTransferID,
         headers: {
           'Content-type': 'application/json'
@@ -85,7 +86,7 @@ it("should have amount", () => {
 it("should have transfer ID", () => {
     cy.request({
         method: 'GET',
-        url: jpay_stage.jpDeposit + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
+        url: urlEnvironment + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
         + JPDepositValidCredentials.stageValidUID + ";" +  ' ',
         headers: {
             'Content-type': 'application/json'
@@ -128,7 +129,7 @@ it("should have duplicate paymentID", () => {
 it("should have invalid transferID", () => {
     cy.request({
         method: 'GET',
-        url: jpay_stage.jpDeposit + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
+        url: urlEnvironment + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
         + JPDepositValidCredentials.stageValidUID + ";" +JPDepositValidCredentials.stageValidTransferID + "invalid",
         headers: {
             'Content-type': 'application/json'
@@ -150,7 +151,7 @@ it("should have invalid transferID", () => {
 it("should have invalid UID", () => {
     cy.request({
         method: 'GET',
-        url: jpay_stage.jpDeposit + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
+        url: urlEnvironment + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
         + JPDepositValidCredentials.stageValidUID + "invalid" + ";" +JPDepositValidCredentials.stageValidTransferID,
         headers: {
             'Content-type': 'application/json'
@@ -172,7 +173,7 @@ it("should have invalid UID", () => {
 it("should have amount with decimal", () => {
     cy.request({
         method: 'GET',
-        url: jpay_stage.jpDeposit + paymentID2 + "/" + 100.101 + "@" 
+        url: urlEnvironment + paymentID2 + "/" + 100.101 + "@" 
         + JPDepositValidCredentials.stageValidUID + ";" +JPDepositValidCredentials.stageValidTransferID,
         headers: {
             'Content-type': 'application/json'
@@ -194,7 +195,7 @@ it("should have amount with decimal", () => {
 it("should have no data available", () => {
     cy.request({
         method: 'GET',
-        url: jpay_stage.jpDepositNoData + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
+        url: urlEnvironmentNoData + paymentID2 + "/" + JPDepositValidCredentials.validAmount + "@" 
         + JPDepositValidCredentials.stageValidUID + ";" +JPDepositValidCredentials.stageValidTransferID,
         headers: {
             'Content-type': 'application/json'

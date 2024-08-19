@@ -2,9 +2,9 @@ var jpay_stage = {
     generateTransfer: "https://api-stage.orientalwallet.com/api/v1/generate-transfer",
     jpDeposit:   "https://api-stage.orientalwallet.com/api/v1/deposit-receive?data=",
     jpDepositNoData: "https://api-stage.orientalwallet.com/api/v1/deposit-receive?",
-    postWithdrawal: "https://api-stage.orientalwallet.com/api/v1/withdrawal-receive",
-    jpWithdrawalbatch: "https://api-stage.orientalwallet.com/api/v1/jp-withdrawal/jp-create?",
-    beeceptorUrl: "https://testingjpay101.free.beeceptor.com",
+    jpWithdrawalBatch: "https://api-stage.orientalwallet.com/api/v1/withdrawal-receive",
+    jpWithdrawalAuto: "https://api-stage.orientalwallet.com/api/v1/jp-withdrawal/jp-create?",
+    beeceptorUrlKazuha: "https://testingjpay101.free.beeceptor.com",
     beeceptorUrlAyaka: "https://ayakajpay.free.beeceptor.com",
     }
 var jpaypprod_url = {

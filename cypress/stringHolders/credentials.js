@@ -40,14 +40,17 @@ var JPDepositInvalidCredentials = {
     emptyAmount: '',
 }
 
-var JPWithdrawalValidCredentials = {
-    stageAccountNumber: "8840451493",
-    stageValidMerchantName: "Kazuha Kadehara",
-    merchantID: "CRA378942",
-    accountID: "8840451493",
-    ayakaEmailAddress: "aya@mailinator.com",
-    kazuhaEmailAddress: "kazuha@mailinator.com",
-    withdrawalAmount: "10000",
+var jpWithdrawalValidCreds= {
+    stgKazAccNum: "8840451493",
+    stgAyaAccNum: "8471592957",
+    stgValidMrchntName: "Kazuha Kadehara",
+    stgKazMerchantID: "CRA378942",
+    stgAyaMerchantID: "UEW481008",
+    stgKazAccID: "8840451493",
+    stgAyaAccID: "8471592957",
+    stgAyaEmailAdd: "aya@mailinator.com",
+    stgKazEmailAdd: "kazuha@mailinator.com",
+    withdrawalAmount: Math.floor((Math.random(1000) * 99999) + 1),
     payloadType: "WITHDRAWAL_REQUEST",
     merchantNumber: "8840451493",
     bankName: "みずほ銀行",
@@ -80,6 +83,6 @@ var JPWithdrawalInvalidCredentials = {
 
 module.exports =    {JPDepositValidCredentials,
                     JPDepositInvalidCredentials,
-                    JPWithdrawalValidCredentials,
+                    jpWithdrawalValidCreds,
                     JPWithdrawalInvalidCredentials,
                     JPDepositValidCredentials};

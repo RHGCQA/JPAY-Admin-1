@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "@kanidjar/cypress-qatouch-reporter": "^1.1.1",
+    "cypress-plugin-api": "^2.11.2",
     "cypress-qatouch-reporter": "^1.2.1"
   }
 }
