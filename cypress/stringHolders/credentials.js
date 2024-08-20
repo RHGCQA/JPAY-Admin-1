@@ -63,7 +63,7 @@ var jpWithdrawalValidCreds= {
     merchantTxnNumber: merchantTxnNumber,
 }
 
-var JPWithdrawalInvalidCredentials = {
+var jpWithdrawalInvCreds = {
     invalidSignature: "09757fc63b6e3002cdecc37c3c9b5ff309039504f157735b60ff43e467c14ec",
     usedSignature: "f09757fc63b6e3002cdecc37c3c9b5ff309039504f157735b60ff43e467c14ec",
     threeDigitBankCode: "111",
@@ -84,5 +84,5 @@ var JPWithdrawalInvalidCredentials = {
 module.exports =    {JPDepositValidCredentials,
                     JPDepositInvalidCredentials,
                     jpWithdrawalValidCreds,
-                    JPWithdrawalInvalidCredentials,
+                    jpWithdrawalInvCreds,
                     JPDepositValidCredentials};
