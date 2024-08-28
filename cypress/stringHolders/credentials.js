@@ -61,6 +61,8 @@ var jpWithdrawalValidCreds= {
     accountHolderKatakana: "カ）グローバルフィード",
     accountHolderKanji: "カ）グローバルフィード",
     merchantTxnNumber: merchantTxnNumber,
+    account: "1234567",
+    name: "マツダヒロヒト",
 }
 
 var jpWithdrawalInvCreds = {

@@ -478,7 +478,7 @@ it("should have 4 digits bank code", () => {
           bank_name: jpWithdrawalValidCreds.bankName,
           bank_code: jpWithdrawalInvCreds.threeDigitBankCode,
           branch_name: jpWithdrawalValidCreds.branchName,
-          branch_code: jpWithdrawalInvCreds.twoDigitBranchCode,
+          branch_code: jpWithdrawalValidCreds.branchCode,
           account_number: jpWithdrawalValidCreds.accountNumber,
           account_holder_katakana: jpWithdrawalValidCreds.accountHolderKatakana,
           account_holder_kanji: jpWithdrawalValidCreds.accountHolderKanji,
