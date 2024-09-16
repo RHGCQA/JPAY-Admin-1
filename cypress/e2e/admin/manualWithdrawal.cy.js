@@ -13,19 +13,19 @@ let emailAddress = validloginCredentials.stageEmailAddress
 let password = validloginCredentials.stagePassword
 let accountNumber = manualWithdrawalValidCredentials.stageValidAccountNumber
 let merchantName = manualWithdrawalValidCredentials.stageValidMerchantName
-let amount = manualWithdrawalValidCredentials.stageValidAmount
-let message = manualWithdrawalValidCredentials.stageMessage
-let adminNotes = manualWithdrawalValidCredentials.stageAdminNotes
-let jpyDebit = manualWithdrawalValidCredentials.stageJPYDebitCurrency
-let eurDebit = manualWithdrawalValidCredentials.stageEURDebitCurrency
-let usdDebit = manualWithdrawalValidCredentials.stageUSDDebitCurrency
-let gbpDebit = manualWithdrawalValidCredentials.stageGBPDebitCurrency
-let phpDebit = manualWithdrawalValidCredentials.stagePHPDebitCurrency
-let jpy = manualWithdrawalValidCredentials.stageJPYCurrency
-let eur = manualWithdrawalValidCredentials.stageEURCurrency
-let usd = manualWithdrawalValidCredentials.stageUSDCurrency
-let gbp = manualWithdrawalValidCredentials.stageGBPCurrency
-let php = manualWithdrawalValidCredentials.stagePHPCurrency
+let amount = manualWithdrawalValidCredentials.validAmount
+let message = manualWithdrawalValidCredentials.message
+let adminNotes = manualWithdrawalValidCredentials.adminNotes
+let jpyDebit = manualWithdrawalValidCredentials.JPYDebitCurrency
+let eurDebit = manualWithdrawalValidCredentials.EURDebitCurrency
+let usdDebit = manualWithdrawalValidCredentials.USDDebitCurrency
+let gbpDebit = manualWithdrawalValidCredentials.GBPDebitCurrency
+let phpDebit = manualWithdrawalValidCredentials.PHPDebitCurrency
+let jpy = manualWithdrawalValidCredentials.JPYCurrency
+let eur = manualWithdrawalValidCredentials.EURCurrency
+let usd = manualWithdrawalValidCredentials.USDCurrency
+let gbp = manualWithdrawalValidCredentials.GBPCurrency
+let php = manualWithdrawalValidCredentials.PHPCurrency
 let successWithdrawalMessage = ManualWithdrawalSuccessMessage.successManualWithdrawal
 
 describe("Go to Site", () => {
@@ -34,7 +34,7 @@ describe("Go to Site", () => {
  
      })
       
-    it.only("should create Manual Withdrawal All JPY Currency", () => {
+    it("should create Manual Withdrawal All JPY Currency", () => {
        login.getEmailAddressField().type(emailAddress)
        login.getPasswordField().type(password)
        login.getloginButton().click()
@@ -42,6 +42,7 @@ describe("Go to Site", () => {
        withdrawal.getManualWithdrawalPage().click()
        withdrawal.getManualWithdrawalAddNewButton().click()
        withdrawal.getManualWithdrawalAccountNumberField().type(accountNumber)
+       withdrawal.getManualWithdrawalAddNewCardBody().click()
        withdrawal.getManualWithdarawalDebitCurrencyDropdown().select(jpyDebit).contains(jpy)
        withdrawal.getManualWithdrawalCurrencyDropdown().select(jpy).should('have.value', jpy)
        withdrawal.getManualWithdrawalAmountField().type(amount)
@@ -97,6 +98,12 @@ describe("Go to Site", () => {
         withdrawal.getManualWithdarawalDebitCurrencyDropdown().select(eurDebit).contains(eur)
         withdrawal.getManualWithdrawalCurrencyDropdown().select(eur).should('have.value', eur)
         withdrawal.getManualWithdrawalAmountField().type(amount)
+        withdrawal.getManualWithdrawalAddNewCardBody().click()
+        // cy.wait(3000)
+        // withdrawal.getManualWithdrawalEquivalentAmount().then($equivalent => {
+        //     let equivalentAmount = $equivalent.text()
+        //     cy.log(equivalentAmount )
+        //     cy.wrap(equivalentAmount ).as('equivalentAmount ')
         withdrawal.getManualWithdrawalMessageField().type(message)
         withdrawal.getManualWithdrawalAdminNotesField().type(adminNotes)
         withdrawal.getManualWithdrawalAddNewSaveButton().click()
@@ -108,6 +115,7 @@ describe("Go to Site", () => {
         withdrawal.getWithdrawalConfirmationAdminNotes().contains(adminNotes)
         withdrawal.getWithdrawalConfirmationSaveButton().click()
         withdrawal.getManualWithdrawalSuccessMessage().contains(successWithdrawalMessage)
+    //})
     })
 
     it("should create Manual Withdrawal All  GBP Currency", () => {

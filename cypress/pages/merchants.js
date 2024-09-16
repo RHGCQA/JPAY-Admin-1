@@ -28,11 +28,11 @@ getCloseFilter(){
 }
 
 getActionsDropdown(){
-    return cy.get('#__BVID__144__BV_toggle_')
+    return cy.get('#__BVID__153__BV_toggle_')
 }
 
 getDetailsOnActionsDropdown(){
-    return cy.get('#__BVID__144 > .dropdown-menu > :nth-child(3) > .dropdown-item')
+    return cy.get('#__BVID__153 > .dropdown-menu > :nth-child(3) > .dropdown-item')
 }
 
 getJPYAvaialbleBalance(){

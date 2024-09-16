@@ -6,7 +6,7 @@ let merchantTxnNumber = "JPW" + generateString(10)
 var JPDepositValidCredentials = {
     stagevalidSID: "509999232",
     stageValidAccountNumber: "8840451493",
-    stageValidMerchantName: "kazuha_1291121",
+    stageValidMerchantName: "Kazuha Kadehara",
     stageValidTransferID: "2624319",
     stageValidUID: "test_kazuha_0001",
     stageAdminNotes: "Sample Data",

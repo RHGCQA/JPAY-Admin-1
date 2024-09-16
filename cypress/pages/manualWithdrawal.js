@@ -20,6 +20,14 @@ class manualWithdrawalTest {
         return cy.get(':nth-child(1) > .col-md-12 > .form-control')
     }
 
+    getManualWithdrawalAddNewCardBody(){
+        return cy.get('#show-add___BV_modal_body_')
+    }
+
+    getManualWithdrawalEquivalentAmount(){
+        return cy.get('.text-success > :nth-child(2)')
+    }
+
     getManualWithdrawalAddNewCard(){
         return cy.get('#show-add___BV_modal_body_')
     }
@@ -34,6 +42,10 @@ class manualWithdrawalTest {
 
     getManualWithdrawalAmountField(){
         return cy.get(':nth-child(4) > :nth-child(2) > div > .form-control')
+    }
+
+    getManualWithdrawalAddNewModalBody(){
+        return  cy.get('#show-add___BV_modal_body_').click()
     }
 
     getManualWithdrawalMessageField(){

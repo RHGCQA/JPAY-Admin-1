@@ -17,7 +17,7 @@ class JPDepositTest {
         return cy.get(':nth-child(2) > :nth-child(1) > :nth-child(2) > #submenu-fiat > .sidebar-nav > :nth-child(1) > .nav-link')
     }
     getAddNewJPDepositButton(){
-        return cy.get('.row.ml-2 > .d-flex > :nth-child(1)')
+        return cy.get('.row.ml-2 > .d-flex > :nth-child(2)')
     }
     getAccountNumberField(){
         return cy.get(':nth-child(1) > :nth-child(1) > .form-control')
@@ -110,7 +110,7 @@ class JPDepositTest {
         return cy.get('thead > tr > :nth-child(1) > input')
     }
     getJPDepositUpdateAllToCompletedButton(){
-        return cy.get('.row.ml-2 > .d-flex > :nth-child(2)')
+        return cy.get('.d-flex > :nth-child(3)')
     }
     getJPDepositYesConfirmationButton(){
         return cy.get(':nth-child(1) > div > .btn-success')

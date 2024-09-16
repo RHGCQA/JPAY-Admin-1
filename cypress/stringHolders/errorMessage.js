@@ -1,9 +1,9 @@
 import { JPDepositInvalidCredentials, JPDepositValidCredentials } from "./credentials";
 
-let invalidTransferID = JPDepositInvalidCredentials.stageInvalidTransferID
+let invalidTransferID = JPDepositInvalidCredentials.invalidTransferID
 let validUID = JPDepositValidCredentials.stageValidUID
 let validTransferID = JPDepositValidCredentials.stageValidTransferID
-let invalidUID = JPDepositInvalidCredentials.stageInvalidUID
+let invalidUID = JPDepositInvalidCredentials.invalidUID
 
 var loginErrorMessage = {
     invalidPasswordorEmail: "E-USER-001 - Invalid username or password"

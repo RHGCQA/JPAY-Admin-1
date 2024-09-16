@@ -3,7 +3,7 @@ import JPWithdrawalTest from "../../pages/jpWithdrawal"
 import MerchantsTest from "../../pages/merchants"
 import MerchantAccountDetailsTest from "../../pages/merchantAccountDetails"
 import {validloginCredentials, } from "../../stringHolders/loginCredentials"
-import {JPWithdrawalValidCredentials} from "../../stringHolders/credentials"
+import {jpWithdrawalValidCreds} from "../../stringHolders/credentials"
 import jpWithdraw from "../../functions/apis"
 
  
@@ -26,7 +26,7 @@ const jpWithdrawalB = new jpWithdraw()
       login.getloginButton().click()
       merchants.getMerchants().click()
       merchants.getFilterButton().click()
-      merchants.getMerchantNumberField().type(JPWithdrawalValidCredentials.stageAccountNumber)
+      merchants.getMerchantNumberField().type(jpWithdrawalValidCreds.stgKazAccNum)
       merchants.getFilterMerchantButton().click()
       cy.wait(2000)
       merchants.getCloseFilter().click()
