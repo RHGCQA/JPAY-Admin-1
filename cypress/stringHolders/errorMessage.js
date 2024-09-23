@@ -1,4 +1,4 @@
-import { JPDepositInvalidCredentials, JPDepositValidCredentials } from "./credentials";
+import { JPDepositInvalidCredentials, JPDepositValidCredentials } from "./jpayCredentials";
 
 let invalidTransferID = JPDepositInvalidCredentials.invalidTransferID
 let validUID = JPDepositValidCredentials.stageValidUID

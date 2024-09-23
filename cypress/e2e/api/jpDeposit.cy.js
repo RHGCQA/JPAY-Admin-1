@@ -1,7 +1,7 @@
 import { date_today} from "../../stringHolders/dateGenerator";
 import { generateString } from "../../stringHolders/randomStringGenerator";
 import { jpay_stage } from "../../stringHolders/apiEndpoint";
-import {JPDepositValidCredentials} from "../../stringHolders/credentials"
+import {JPDepositValidCredentials} from "../../stringHolders/jpayCredentials"
 
 
 var dateToday = date_today();

@@ -2,7 +2,7 @@ import 'cypress-plugin-api'
 import { hash } from '../../functions/sha256Generator'
 import { jpay_stage } from '../../stringHolders/apiEndpoint'
 import { generateString } from '../../stringHolders/randomStringGenerator'
-import {jpWithdrawalValidCreds, jpWithdrawalInvCreds} from "../../stringHolders/credentials"
+import {jpWithdrawalValidCreds, jpWithdrawalInvCreds} from "../../stringHolders/jpayCredentials"
 
 
 let jpWithdrawalUrlEndpoint = jpay_stage.jpWithdrawalBatch

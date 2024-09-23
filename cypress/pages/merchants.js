@@ -39,4 +39,5 @@ getJPYAvaialbleBalance(){
     return cy.get('.col-md-5 > .card > .card-body > .table > tbody > :nth-child(1) > :nth-child(2)')
 }
 }
+
 module.exports = MerchantsTest

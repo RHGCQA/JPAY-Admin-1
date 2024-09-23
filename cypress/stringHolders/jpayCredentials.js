@@ -1,4 +1,4 @@
-import { generateString } from '../stringHolders/randomStringGenerator'
+import { generateString } from './randomStringGenerator'
 
 let merchantTxnNumber = "JPW" + generateString(10)
 
@@ -30,6 +30,7 @@ var JPDepositValidCredentials = {
     stageManualAPIType: "manual",
     stageAutoAPIType: "auto"
 }
+
 var JPDepositInvalidCredentials = {
     invalidAccountNumber: "8840451493INVALID",
     invalidTransferID: "2624319INVALID",

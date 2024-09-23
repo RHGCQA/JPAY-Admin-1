@@ -3,93 +3,93 @@ import { date_today } from "../../stringHolders/dateGenerator"
 import { generateString } from "../../stringHolders/randomStringGenerator"
 import { invalidloginCredentials, validloginCredentials } from "../../stringHolders/loginCredentials"
 import JPDepositTest from "../../pages/jpDeposit"
-import { JPDepositInvalidCredentials, JPDepositValidCredentials} from "../../stringHolders/credentials"
+import { JPDepositInvalidCredentials, JPDepositValidCredentials } from "../../stringHolders/jpayCredentials"
 import { JPDepositSuccessMessage } from "../../stringHolders/successMessage"
 import { jpDepositErrorMessage } from "../../stringHolders/errorMessage"
 
- const jpDeposit = new JPDepositTest()
- const login = new LoginTest()
-  let emailAddress = validloginCredentials.stageEmailAddress
-  let merchantName = JPDepositValidCredentials.stageValidMerchantName
-  let password = validloginCredentials.stagePassword
-  let dateToday = date_today()
-  let transactionNumber = generateString(15);
-  let paymentIDJPY = dateToday + transactionNumber + 'JPY'
-  let paymentIDJPY2 = dateToday + transactionNumber + 'JPY2'
-  let paymentIDJPY3 = dateToday + transactionNumber + 'JPY3'
-  let paymentIDUSD= dateToday + transactionNumber + 'USD'
-  let paymentIDPHP = dateToday + transactionNumber + 'PHP'
-  let paymentIDGBP = dateToday + transactionNumber + 'GBP'
-  let paymentIDEUR = dateToday + transactionNumber + 'EUR'
-  let paymentIDInvalid = dateToday + transactionNumber + 'JPY' + 'invalid'
-  let accountNumber = JPDepositValidCredentials.stageValidAccountNumber
-  let invalidAccountNumber = JPDepositInvalidCredentials.invalidAccountNumber
-  let transferID = JPDepositValidCredentials.stageValidTransferID
-  let uid = JPDepositValidCredentials.stageValidUID
-  let amount = JPDepositValidCredentials.validAmount
-  let jpy = JPDepositValidCredentials.JPYCurrency
-  let usd = JPDepositValidCredentials.USDCurrency
-  let gbp = JPDepositValidCredentials.GBPCurrency
-  let eur = JPDepositValidCredentials.EURCurrency
-  let php = JPDepositValidCredentials.PHPCurrency
-  let paymentIDFilter = JPDepositValidCredentials.stageSearchPaymentID
-  let txnNumberFilter = JPDepositValidCredentials.stageSearchTxnNumber
-  let merchantNumberFilter = JPDepositValidCredentials.stageSearchMerchantNumber
-  let merchantNameFilter = JPDepositValidCredentials.stageSearchMerchantName
-  let UIDFilter = JPDepositValidCredentials.stageSearchUID
-  let transferIDFilter = JPDepositValidCredentials.stageSearchTransferID
-  let merchantTXNFilter = JPDepositValidCredentials.stageSearchMerchantTXN
-  let adminNotes = JPDepositValidCredentials.stageAdminNotes
-  let successMessage = JPDepositSuccessMessage.successJPDeposit
-  let duplicatePaymentID = jpDepositErrorMessage.jpDepositDuplicatePaymentID
-  let missingAccountNumberErrorMessage = jpDepositErrorMessage.jpDepositMissingAccountNumber
-  let missingAmountErrorMessage = jpDepositErrorMessage.jpDepositMissingAmount
-  let missingPaymentIDErrorMessage = jpDepositErrorMessage.jpDepositMissingPaymentID
-  let missingTransferIDErrorMessage = jpDepositErrorMessage.jpDepositMissingTransferID
-  let missingUIDErrorMessage = jpDepositErrorMessage.jpDepositMissingUID
-  let missingReceivingCurrencyErrorMessage = jpDepositErrorMessage.jpDepositMissingReceivingCurrency
-  let missingAdminNotesErrorMessage = jpDepositErrorMessage.jpDepositMissingAdminNote
-  let merchantNotFoundErrorMessageCard = jpDepositErrorMessage.jpDepositMerchantNotFoundCard
-  let merchantNotFoundErrorMessageAddNew = jpDepositErrorMessage.jpDepositMerchantNotFoundAddNewButton
-  let merchantInvalidTransferID = jpDepositErrorMessage.jpDepositInvalidTransferIDError
-  let invalidTransferID = JPDepositInvalidCredentials.invalidTransferID
-  let merchantInvalidUID = jpDepositErrorMessage.jpDepositInvalidUIDError
-  let invalidUID = JPDepositInvalidCredentials.invalidUID
-  let completedFilter = JPDepositValidCredentials.stageCompletedStatus
-  let forConfirmationFilter = JPDepositValidCredentials.stageForConfirmationStatus
-  let yesCallbackFilter = JPDepositValidCredentials.stageYesCallbackStatus
-  let noCallbackFilter = JPDepositValidCredentials.stageNoCallbackStatus
-  let manualAPIFilter = JPDepositValidCredentials.stageManualAPIType
-  let autoAPIFilter = JPDepositValidCredentials.stageAutoAPIType
-  let updateAllMissingMerchantNumberErrorMessage = jpDepositErrorMessage.jpDepositUpdateAllWithMissingMerchantNumber
-  let searchFieldErrorMessage = jpDepositErrorMessage.jpDepositSearchFieldIsRequired
-  let searchFieldInvalidErrorMessage = jpDepositErrorMessage.jpDepositSearchFieldIsInvalid
+const jpDeposit = new JPDepositTest()
+const login = new LoginTest()
+let emailAddress = validloginCredentials.stageEmailAddress
+let merchantName = JPDepositValidCredentials.stageValidMerchantName
+let password = validloginCredentials.stagePassword
+let dateToday = date_today()
+let transactionNumber = generateString(15);
+let paymentIDJPY = dateToday + transactionNumber + 'JPY'
+let paymentIDJPY2 = dateToday + transactionNumber + 'JPY2'
+let paymentIDJPY3 = dateToday + transactionNumber + 'JPY3'
+let paymentIDUSD = dateToday + transactionNumber + 'USD'
+let paymentIDPHP = dateToday + transactionNumber + 'PHP'
+let paymentIDGBP = dateToday + transactionNumber + 'GBP'
+let paymentIDEUR = dateToday + transactionNumber + 'EUR'
+let paymentIDInvalid = dateToday + transactionNumber + 'JPY' + 'invalid'
+let accountNumber = JPDepositValidCredentials.stageValidAccountNumber
+let invalidAccountNumber = JPDepositInvalidCredentials.invalidAccountNumber
+let transferID = JPDepositValidCredentials.stageValidTransferID
+let uid = JPDepositValidCredentials.stageValidUID
+let amount = JPDepositValidCredentials.validAmount
+let jpy = JPDepositValidCredentials.JPYCurrency
+let usd = JPDepositValidCredentials.USDCurrency
+let gbp = JPDepositValidCredentials.GBPCurrency
+let eur = JPDepositValidCredentials.EURCurrency
+let php = JPDepositValidCredentials.PHPCurrency
+let paymentIDFilter = JPDepositValidCredentials.stageSearchPaymentID
+let txnNumberFilter = JPDepositValidCredentials.stageSearchTxnNumber
+let merchantNumberFilter = JPDepositValidCredentials.stageSearchMerchantNumber
+let merchantNameFilter = JPDepositValidCredentials.stageSearchMerchantName
+let UIDFilter = JPDepositValidCredentials.stageSearchUID
+let transferIDFilter = JPDepositValidCredentials.stageSearchTransferID
+let merchantTXNFilter = JPDepositValidCredentials.stageSearchMerchantTXN
+let adminNotes = JPDepositValidCredentials.stageAdminNotes
+let successMessage = JPDepositSuccessMessage.successJPDeposit
+let duplicatePaymentID = jpDepositErrorMessage.jpDepositDuplicatePaymentID
+let missingAccountNumberErrorMessage = jpDepositErrorMessage.jpDepositMissingAccountNumber
+let missingAmountErrorMessage = jpDepositErrorMessage.jpDepositMissingAmount
+let missingPaymentIDErrorMessage = jpDepositErrorMessage.jpDepositMissingPaymentID
+let missingTransferIDErrorMessage = jpDepositErrorMessage.jpDepositMissingTransferID
+let missingUIDErrorMessage = jpDepositErrorMessage.jpDepositMissingUID
+let missingReceivingCurrencyErrorMessage = jpDepositErrorMessage.jpDepositMissingReceivingCurrency
+let missingAdminNotesErrorMessage = jpDepositErrorMessage.jpDepositMissingAdminNote
+let merchantNotFoundErrorMessageCard = jpDepositErrorMessage.jpDepositMerchantNotFoundCard
+let merchantNotFoundErrorMessageAddNew = jpDepositErrorMessage.jpDepositMerchantNotFoundAddNewButton
+let merchantInvalidTransferID = jpDepositErrorMessage.jpDepositInvalidTransferIDError
+let invalidTransferID = JPDepositInvalidCredentials.invalidTransferID
+let merchantInvalidUID = jpDepositErrorMessage.jpDepositInvalidUIDError
+let invalidUID = JPDepositInvalidCredentials.invalidUID
+let completedFilter = JPDepositValidCredentials.stageCompletedStatus
+let forConfirmationFilter = JPDepositValidCredentials.stageForConfirmationStatus
+let yesCallbackFilter = JPDepositValidCredentials.stageYesCallbackStatus
+let noCallbackFilter = JPDepositValidCredentials.stageNoCallbackStatus
+let manualAPIFilter = JPDepositValidCredentials.stageManualAPIType
+let autoAPIFilter = JPDepositValidCredentials.stageAutoAPIType
+let updateAllMissingMerchantNumberErrorMessage = jpDepositErrorMessage.jpDepositUpdateAllWithMissingMerchantNumber
+let searchFieldErrorMessage = jpDepositErrorMessage.jpDepositSearchFieldIsRequired
+let searchFieldInvalidErrorMessage = jpDepositErrorMessage.jpDepositSearchFieldIsInvalid
 
- 
- describe("Go to Site", () => {
-   beforeEach(() => {
-     login.visit()
+
+describe("JP DEPOSIT TESTING", () => {
+    beforeEach(() => {
+        login.visit()
 
     })
-     
-   it("[QATouch-eJanvm] should create JP Deposit JPY Currency", () => {
-      login.getEmailAddressField().type(emailAddress)
-      login.getPasswordField().type(password)
-      login.getloginButton().click()
-      jpDeposit.getFiatTransactions().click()
-      jpDeposit.getJPDeposit().click()
-      jpDeposit.getJPDepositTransactions().click()
-      jpDeposit.getAddNewJPDepositButton().click()
-      jpDeposit.getAccountNumberField().type(accountNumber)
-      jpDeposit.getTransferIDField().type(transferID)
-      jpDeposit.getUIDField().type(uid)
-      jpDeposit.getAmountField().type(amount)
-      jpDeposit.getPaymentIDField().type(paymentIDJPY)
-      jpDeposit.getReceivingCurrencyDropdown().select(jpy).should('have.value', jpy)
-      jpDeposit.getAdminNotedField().type(adminNotes)
-      jpDeposit.getSaveJPDepositButton().click()
-      jpDeposit.getSuccessMessageToast().contains(successMessage)
-      jpDeposit.getJPDepositCard().contains(paymentIDJPY)
+
+    it("[QATouch-eJanvm] should create JP Deposit JPY Currency", () => {
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        jpDeposit.getFiatTransactions().click()
+        jpDeposit.getJPDeposit().click()
+        jpDeposit.getJPDepositTransactions().click()
+        jpDeposit.getAddNewJPDepositButton().click()
+        jpDeposit.getAccountNumberField().type(accountNumber)
+        jpDeposit.getTransferIDField().type(transferID)
+        jpDeposit.getUIDField().type(uid)
+        jpDeposit.getAmountField().type(amount)
+        jpDeposit.getPaymentIDField().type(paymentIDJPY)
+        jpDeposit.getReceivingCurrencyDropdown().select(jpy).should('have.value', jpy)
+        jpDeposit.getAdminNotedField().type(adminNotes)
+        jpDeposit.getSaveJPDepositButton().click()
+        jpDeposit.getSuccessMessageToast().contains(successMessage)
+        jpDeposit.getJPDepositCard().contains(paymentIDJPY)
     })
 
     it("[QATouch-va8531] should create JP Deposit USD Currency", () => {
@@ -418,30 +418,30 @@ import { jpDepositErrorMessage } from "../../stringHolders/errorMessage"
     })
 
     it("[QATouch-ajRX8e] should create JP Deposit JPY Currency and Lift to Completed", () => {
-      login.getEmailAddressField().type(emailAddress)
-      login.getPasswordField().type(password)
-      login.getloginButton().click()
-      jpDeposit.getFiatTransactions().click()
-      jpDeposit.getJPDeposit().click()
-      jpDeposit.getJPDepositTransactions().click()
-      jpDeposit.getAddNewJPDepositButton().click()
-      jpDeposit.getAccountNumberField().type(accountNumber)
-      jpDeposit.getTransferIDField().type(transferID)
-      jpDeposit.getUIDField().type(uid)
-      jpDeposit.getAmountField().type(amount)
-      jpDeposit.getPaymentIDField().type(paymentIDJPY2)
-      jpDeposit.getReceivingCurrencyDropdown().select(jpy).should('have.value', jpy)
-      jpDeposit.getAdminNotedField().type(adminNotes)
-      jpDeposit.getSaveJPDepositButton().click()
-      jpDeposit.getSuccessMessageToast().contains(successMessage)
-      jpDeposit.getJPDepositCard().contains(paymentIDJPY2)
-      jpDeposit.getJPDepositShowFilterMenu().click()
-      jpDeposit.getJPDepositSearchFilter().select(paymentIDFilter).should('have.value', paymentIDFilter )
-      jpDeposit.getJPDepositSearchFilterField().type(paymentIDJPY2)
-      jpDeposit.getJPDepositFilterButton().click()
-      jpDeposit.getJPDepositSelectAllCheckbox().click()
-      jpDeposit.getJPDepositUpdateAllToCompletedButton().click()
-      jpDeposit.getJPDepositYesConfirmationButton().click()
+        login.getEmailAddressField().type(emailAddress)
+        login.getPasswordField().type(password)
+        login.getloginButton().click()
+        jpDeposit.getFiatTransactions().click()
+        jpDeposit.getJPDeposit().click()
+        jpDeposit.getJPDepositTransactions().click()
+        jpDeposit.getAddNewJPDepositButton().click()
+        jpDeposit.getAccountNumberField().type(accountNumber)
+        jpDeposit.getTransferIDField().type(transferID)
+        jpDeposit.getUIDField().type(uid)
+        jpDeposit.getAmountField().type(amount)
+        jpDeposit.getPaymentIDField().type(paymentIDJPY2)
+        jpDeposit.getReceivingCurrencyDropdown().select(jpy).should('have.value', jpy)
+        jpDeposit.getAdminNotedField().type(adminNotes)
+        jpDeposit.getSaveJPDepositButton().click()
+        jpDeposit.getSuccessMessageToast().contains(successMessage)
+        jpDeposit.getJPDepositCard().contains(paymentIDJPY2)
+        jpDeposit.getJPDepositShowFilterMenu().click()
+        jpDeposit.getJPDepositSearchFilter().select(paymentIDFilter).should('have.value', paymentIDFilter)
+        jpDeposit.getJPDepositSearchFilterField().type(paymentIDJPY2)
+        jpDeposit.getJPDepositFilterButton().click()
+        jpDeposit.getJPDepositSelectAllCheckbox().click()
+        jpDeposit.getJPDepositUpdateAllToCompletedButton().click()
+        jpDeposit.getJPDepositYesConfirmationButton().click()
     })
 
     it("[QATouch-ajRX8e] should filter using Transaction Number", () => {
@@ -462,11 +462,12 @@ import { jpDepositErrorMessage } from "../../stringHolders/errorMessage"
             cy.wrap(jpDepTxnNumber).as('jpDepTxnNumber')
         })
         jpDeposit.getJPDepositResetButton().click()
-        cy.get('@jpDepTxnNumber').then(jpDepTxnNumber => { cy.log(jpDepTxnNumber)
-        jpDeposit.getJPDepositSearchFilter().select(txnNumberFilter).should('have.value', txnNumberFilter )
-        jpDeposit.getJPDepositSearchFilterField().type(jpDepTxnNumber)
-        jpDeposit.getJPDepositFilterButton().click()
-        jpDeposit.getJPDepositCard().contains(jpDepTxnNumber)
+        cy.get('@jpDepTxnNumber').then(jpDepTxnNumber => {
+            cy.log(jpDepTxnNumber)
+            jpDeposit.getJPDepositSearchFilter().select(txnNumberFilter).should('have.value', txnNumberFilter)
+            jpDeposit.getJPDepositSearchFilterField().type(jpDepTxnNumber)
+            jpDeposit.getJPDepositFilterButton().click()
+            jpDeposit.getJPDepositCard().contains(jpDepTxnNumber)
         })
     })
 
@@ -782,21 +783,22 @@ import { jpDepositErrorMessage } from "../../stringHolders/errorMessage"
             cy.wrap(jpDepTxnNumber).as('jpDepTxnNumber')
         })
         jpDeposit.getJPDepositResetButton().click()
-        cy.get('@jpDepTxnNumber').then(jpDepTxnNumber => { cy.log(jpDepTxnNumber)
-        jpDeposit.getJPDepositSearchFilter().select(txnNumberFilter).should('have.value', txnNumberFilter )
-        jpDeposit.getJPDepositSearchFilterField().type(jpDepTxnNumber)
-        jpDeposit.getJPDepositFilterButton().click()
-        jpDeposit.getJPDepositCard().contains(jpDepTxnNumber)
-        jpDeposit.getJPDepositFilterButton().click()
-        jpDeposit.getJPDepositCard().contains(paymentIDJPY3)
-        jpDeposit.getJPDepositCheckAllJPDeposit().click()
-        jpDeposit.getJPDepositSearchFilterField().clear()
-        jpDeposit.getJPDepositSearchFieldRequiredErrorMessage().contains(searchFieldErrorMessage)
-        jpDeposit.getJPDepositUpdateAllToCompletedButton().click()
-        jpDeposit.getJPDepositYesConfirmationButton().click()
-        jpDeposit.getJPDepositUpdateAllToCompletedMissingMerchantNumberErrorMessage().contains(updateAllMissingMerchantNumberErrorMessage)
-        jpDeposit.getJPDepositMerchantNotFoundErrorMessageOkButton().click()
-        jpDeposit.getJPDepositCard().contains(forConfirmationFilter)
+        cy.get('@jpDepTxnNumber').then(jpDepTxnNumber => {
+            cy.log(jpDepTxnNumber)
+            jpDeposit.getJPDepositSearchFilter().select(txnNumberFilter).should('have.value', txnNumberFilter)
+            jpDeposit.getJPDepositSearchFilterField().type(jpDepTxnNumber)
+            jpDeposit.getJPDepositFilterButton().click()
+            jpDeposit.getJPDepositCard().contains(jpDepTxnNumber)
+            jpDeposit.getJPDepositFilterButton().click()
+            jpDeposit.getJPDepositCard().contains(paymentIDJPY3)
+            jpDeposit.getJPDepositCheckAllJPDeposit().click()
+            jpDeposit.getJPDepositSearchFilterField().clear()
+            jpDeposit.getJPDepositSearchFieldRequiredErrorMessage().contains(searchFieldErrorMessage)
+            jpDeposit.getJPDepositUpdateAllToCompletedButton().click()
+            jpDeposit.getJPDepositYesConfirmationButton().click()
+            jpDeposit.getJPDepositUpdateAllToCompletedMissingMerchantNumberErrorMessage().contains(updateAllMissingMerchantNumberErrorMessage)
+            jpDeposit.getJPDepositMerchantNotFoundErrorMessageOkButton().click()
+            jpDeposit.getJPDepositCard().contains(forConfirmationFilter)
         })
     })
 
@@ -924,20 +926,21 @@ import { jpDepositErrorMessage } from "../../stringHolders/errorMessage"
             cy.wrap(jpDepTxnNumber).as('jpDepTxnNumber')
         })
         jpDeposit.getJPDepositResetButton().click()
-        cy.get('@jpDepTxnNumber').then(jpDepTxnNumber => { cy.log(jpDepTxnNumber)
-        jpDeposit.getJPDepositSearchFilter().select(txnNumberFilter).should('have.value', txnNumberFilter )
-        jpDeposit.getJPDepositSearchFilterField().type(jpDepTxnNumber)
-        jpDeposit.getJPDepositFilterButton().click()
-        jpDeposit.getJPDepositCard().contains(jpDepTxnNumber)
-        jpDeposit.getJPDepositFilterButton().click()
-        jpDeposit.getJPDepositCard().contains(jpDepTxnNumber)
-        jpDeposit.getJPDepositCheckAllJPDeposit().click()
-        jpDeposit.getJPDepositSearchFilterField().type("Invalid")
-        jpDeposit.getJPDepositUpdateAllToCompletedButton().click()
-        jpDeposit.getJPDepositYesConfirmationButton().click()
-        jpDeposit.getJPDepositSearchFieldInvalidErrorMessage().contains(searchFieldInvalidErrorMessage)
-        jpDeposit.getJPDepositMerchantNotFoundErrorMessageOkButton().click()
-        jpDeposit.getJPDepositCard().contains(forConfirmationFilter)
+        cy.get('@jpDepTxnNumber').then(jpDepTxnNumber => {
+            cy.log(jpDepTxnNumber)
+            jpDeposit.getJPDepositSearchFilter().select(txnNumberFilter).should('have.value', txnNumberFilter)
+            jpDeposit.getJPDepositSearchFilterField().type(jpDepTxnNumber)
+            jpDeposit.getJPDepositFilterButton().click()
+            jpDeposit.getJPDepositCard().contains(jpDepTxnNumber)
+            jpDeposit.getJPDepositFilterButton().click()
+            jpDeposit.getJPDepositCard().contains(jpDepTxnNumber)
+            jpDeposit.getJPDepositCheckAllJPDeposit().click()
+            jpDeposit.getJPDepositSearchFilterField().type("Invalid")
+            jpDeposit.getJPDepositUpdateAllToCompletedButton().click()
+            jpDeposit.getJPDepositYesConfirmationButton().click()
+            jpDeposit.getJPDepositSearchFieldInvalidErrorMessage().contains(searchFieldInvalidErrorMessage)
+            jpDeposit.getJPDepositMerchantNotFoundErrorMessageOkButton().click()
+            jpDeposit.getJPDepositCard().contains(forConfirmationFilter)
         })
     })
 
@@ -1004,11 +1007,11 @@ import { jpDepositErrorMessage } from "../../stringHolders/errorMessage"
         jpDeposit.getJPDepositCard().contains(forConfirmationFilter)
     })
 
-    
 
 
 
-  
+
+
 
 
 

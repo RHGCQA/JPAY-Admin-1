@@ -1,13 +1,12 @@
 import 'cypress-plugin-api'
 import { generateString } from "../../stringHolders/randomStringGenerator";
 import { jpay_stage } from "../../stringHolders/apiEndpoint";
-import {JPDepositValidCredentials} from "../../stringHolders/credentials"
+import {JPDepositValidCredentials} from "../../stringHolders/jpayCredentials.js"
+import {epayValidCredentials} from "../../stringHolders/epayCredentials.js"
 
-let uId = "DEF" + generateString(15)
 
 
 describe('JPAY EPAY GENERATE', () => {
-
 
 it("POST Generate Transfer", () => {
         cy.request({
@@ -17,16 +16,14 @@ it("POST Generate Transfer", () => {
             'Content-type': 'application/json'
         },
         body:{
-            sid: JPDepositValidCredentials.stagevalidSID,
-            uid: uId,
-            merchant_number: JPDepositValidCredentials.stageValidAccountNumber,
-            am: 1000
+            sid: epayValidCredentials.stagevalidSID,
+            uid: epayValidCredentials.uid,
+            merchant_number: epayValidCredentials.stageValidAccountNumber,
+            am: epayValidCredentials.amount
         },
-});
+        });
 
-    console.log(JPDepositValidCredentials.stagevalidSID)
 })
-
 
 
 })
