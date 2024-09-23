@@ -28,11 +28,11 @@ class JPWithdrawalTest {
     }
 
     getJPWithdrawalActionDropdown() {
-        return cy.get('#__BVID__112__BV_toggle_')
+        return cy.get('[data-v-36195da4] > .btn.dropdown-toggle.btn-secondary.btn-sm')
     }
 
     getJPWIthdrawalActionAddEdit() {
-        return cy.get('#__BVID__112 > .dropdown-menu > li > .dropdown-item')
+        return cy.get('[data-v-36195da4] > .dropdown-menu > li > .dropdown-item')
     }
 
     getJPWithdrawalActionStatusDropdown() {
@@ -63,6 +63,10 @@ class JPWithdrawalTest {
 
     getJPWithdrawalModalBodyCallbackUrl() {
         return cy.get('.my-2.mb-4 > :nth-child(1)')
+    }
+
+    getJPWithdrawaModalBackButton() {
+        return cy.get('#show-summary___BV_modal_footer_ > div > .btn-secondary')
     }
 
     getTransactionListTable() {
@@ -136,6 +140,11 @@ class JPWithdrawalTest {
     getTransactionListTableAPIType() {
         return cy.get('tbody > tr > :nth-child(21)')
     }
+
+    getJPWithdrawalReload() {
+        return cy.get('.px-4 > a > .material-design-icon > .material-design-icon__svg')
+    }
+
 
 }
 module.exports = JPWithdrawalTest
