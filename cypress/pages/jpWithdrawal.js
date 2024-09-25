@@ -39,7 +39,6 @@ class JPWithdrawalTest {
         return cy.get('.my-2.mb-4 > :nth-child(2) > .form-control')
     }
 
-
     getJPWithdrawalActionsSave() {
         return cy.get('#show-summary___BV_modal_footer_ > div > .btn-info')
     }
@@ -55,7 +54,6 @@ class JPWithdrawalTest {
     getJPWithdrawalModalBodyDebitAmount() {
         return cy.get(':nth-child(1) > .table > :nth-child(3) > :nth-child(2)')
     }
-
 
     getJPWithdrawalModalBodyBeneficiaryAmount() {
         return cy.get(':nth-child(1) > .table > :nth-child(5) > :nth-child(2)')
@@ -145,6 +143,33 @@ class JPWithdrawalTest {
         return cy.get('.px-4 > a > .material-design-icon > .material-design-icon__svg')
     }
 
+    getJPWithdrawalStatusFilter() {
+        return cy.get('.card-body > :nth-child(2) > :nth-child(1) > .form-control')
+    }
+
+    getJPWithdrawalExportButton() {
+        return cy.get('.btn-warning')
+    }
+
+    getJPWithdrawalExportConfirmation() {
+        return cy.get('.float-right > div > .btn-success')
+    }
+
+    getJPWithdrawalTotalTransactions() {
+        return cy.get('tbody > tr > .py-2')
+    }
+
+    getJPWithdrawalTotalAmount() {
+        return cy.get('.row > table > tbody > tr > :nth-child(2)')
+    }
+
+    getJPWithdrawalTotalFee() {
+        return cy.get('.row > table > tbody > tr > :nth-child(3)')
+    }
+
+    getJPWithdrawalAPITypeFilter() {
+        return cy.get(':nth-child(3) > .form-control')
+    }
 
 }
 module.exports = JPWithdrawalTest

@@ -1,24 +1,23 @@
 import 'cypress-plugin-api'
 import LoginTest from "../../pages/loginPages"
 import JPWithdrawalTest from "../../pages/jpWithdrawal"
-import { hash } from '../../functions/sha256Generator'
-import { jpay_stage } from '../../stringHolders/apiEndpoint'
-import { generateString } from '../../stringHolders/randomStringGenerator'
-import { jpWithdrawalValidCreds, jpWithdrawalInvCreds } from "../../stringHolders/jpayCredentials"
-import { invalidloginCredentials, validloginCredentials } from "../../stringHolders/loginCredentials"
-import { JPDepositInvalidCredentials, JPDepositValidCredentials } from "../../stringHolders/jpayCredentials"
+import parsePapa from "../../functions/paparseCsv"
+import { jpWithdrawalValidCreds } from "../../stringHolders/jpayCredentials"
+import { validloginCredentials } from "../../stringHolders/loginCredentials"
+import { JPDepositValidCredentials } from "../../stringHolders/jpayCredentials"
 import { jpWithdrawalBatch, jpWithdrawalBatch2, jpWithdrawalBatch3 } from "../../functions/jpWithdrawBatch"
-import responseDetails from "../../functions/jpWithdrawBatch"
-import { formatDate, adjustDate } from '../../functions/dateConverter';
 import {
   jpWithdrawalAuto, jpWithdrawalAuto2, jpWithdrawalAuto3,
   jpWithdrawalAuto4, jpWithdrawalAuto5, jpWithdrawalAuto6,
 } from '../../functions/jpWithdrawalAuto'
 import MerchantsTest from '../../pages/merchants'
 
+
+parsePapa();
 const login = new LoginTest()
 const jpwithdrawal = new JPWithdrawalTest()
 const merchants = new MerchantsTest()
+
 
 
 let emailAddress = validloginCredentials.stageEmailAddress
@@ -82,7 +81,6 @@ describe("JPAY Withdrawal TRANSACTION CHECKER", () => {
       });
     });
   })
-
 
   it("should create JP Withdrawal Batch and Check JP Withdrawal Request Modal Details", () => {
 
@@ -193,7 +191,7 @@ describe("JPAY Withdrawal TRANSACTION CHECKER", () => {
       jpwithdrawal.getJPWithdrawalSearchFilter().select("Transaction Number").should('have.value', "transaction_number")
       jpwithdrawal.getJPWithdrawalSearchField().type(response.body.data.transaction_number)
       jpwithdrawal.getJPWithdrawalFilterButton().click()
-      cy.wait(5000)
+      cy.wait(10000)
       jpwithdrawal.getJPWithdrawalActionDropdown().click({ force: true })
       jpwithdrawal.getJPWIthdrawalActionAddEdit().click()
       jpwithdrawal.getJPWithdrawalActionStatusDropdown().select("completed").should('have.value', "completed")
@@ -224,6 +222,7 @@ describe("JPAY Withdrawal TRANSACTION CHECKER", () => {
         jpwithdrawal.getJPWithdrawaModalBackButton().click()
         cy.wait(2000)
         jpwithdrawal.getJPWithdrawalReload().click()
+        cy.wait(10000)
         jpwithdrawal.getTransactionListTableCallbackStatus().contains("Yes")
         jpwithdrawal.getTransactionListTableStatus().contains("completed")
         cy.wait(60000)
@@ -487,6 +486,137 @@ describe("JPAY Withdrawal TRANSACTION CHECKER", () => {
       jpwithdrawal.getTransactionListTableCallbackStatus().contains("No")
       jpwithdrawal.getTransactionListTableAPIType().contains("A-Batch")
 
+    });
+  })
+
+})
+
+describe("JPAY Withdrawal Computation", () => {
+  beforeEach(() => {
+    login.visit()
+
+  })
+
+  it("should Compute all Batch transactions and check calculations ", () => {
+    let totalAmount = 0;
+    let totalFee = 0;
+    login.getEmailAddressField().type(emailAddress)
+    login.getPasswordField().type(password)
+    login.getloginButton().click()
+    jpwithdrawal.getFiatTransactions().click()
+    jpwithdrawal.getJPWithdrawals().click()
+    jpwithdrawal.getJPWithdrawalShowFilterMenu().click()
+    jpwithdrawal.getJPWithdrawalSearchFilter().select("Merchant Number").should('have.value', "merchant_number")
+    jpwithdrawal.getJPWithdrawalSearchField().type(JPDepositValidCredentials.stageValidAccountNumber)
+    jpwithdrawal.getJPWithdrawalStatusFilter().select("applying").should('have.value', "applying")
+    jpwithdrawal.getJPWithdrawalAPITypeFilter().select("batch").should('have.value', "batch")
+    jpwithdrawal.getJPWithdrawalFilterButton().click()
+    jpwithdrawal.getJPWithdrawalExportButton().click()
+    jpwithdrawal.getJPWithdrawalExportConfirmation().click()
+    cy.wait(5000)
+    cy.task('findAndRenameLatestFile', {
+      directoryPath: 'cypress/downloads',
+      newFileName: 'jpWithdrawalExport.csv'
+    }).then((message) => {
+      cy.log(message);
+      cy.parseCsv('cypress/downloads/jpWithdrawalExport.csv').then((jsonData) => {
+        let totalTxns = jsonData.length
+        for (let x = 0; totalTxns > x; x++) {
+          const am = jsonData[x]["Amount"].replace(/,/g, '');
+          const fe = jsonData[x]["Fee"].replace(/,/g, '');
+          totalAmount += parseFloat(am);
+          totalFee += parseFloat(fe)
+        }
+        cy.log("Fee:" + totalFee + " Amount " + totalAmount)
+        jpwithdrawal.getJPWithdrawalTotalTransactions().contains(totalTxns)
+        jpwithdrawal.getJPWithdrawalTotalFee().contains("JPY " + formatter.format(totalFee) + ".00")
+        jpwithdrawal.getJPWithdrawalTotalAmount().contains("JPY " + formatter.format(totalAmount) + ".00")
+      });
+    })
+    cy.task('deleteFile', 'cypress/downloads/jpWithdrawalExport.csv').then((message) => {
+      cy.log(message);
+    });
+  })
+
+  it("should Compute all Auto transactions and check calculations ", () => {
+    let totalAmount = 0;
+    let totalFee = 0;
+    login.getEmailAddressField().type(emailAddress)
+    login.getPasswordField().type(password)
+    login.getloginButton().click()
+    jpwithdrawal.getFiatTransactions().click()
+    jpwithdrawal.getJPWithdrawals().click()
+    jpwithdrawal.getJPWithdrawalShowFilterMenu().click()
+    jpwithdrawal.getJPWithdrawalSearchFilter().select("Merchant Number").should('have.value', "merchant_number")
+    jpwithdrawal.getJPWithdrawalSearchField().type(JPDepositValidCredentials.stageValidAccountNumber)
+    jpwithdrawal.getJPWithdrawalStatusFilter().select("applying").should('have.value', "applying")
+    jpwithdrawal.getJPWithdrawalAPITypeFilter().select("auto").should('have.value', "auto")
+    jpwithdrawal.getJPWithdrawalFilterButton().click()
+    jpwithdrawal.getJPWithdrawalExportButton().click()
+    jpwithdrawal.getJPWithdrawalExportConfirmation().click()
+    cy.wait(5000)
+    cy.task('findAndRenameLatestFile', {
+      directoryPath: 'cypress/downloads',
+      newFileName: 'jpWithdrawalExport.csv'
+    }).then((message) => {
+      cy.log(message);
+      cy.parseCsv('cypress/downloads/jpWithdrawalExport.csv').then((jsonData) => {
+        let totalTxns = jsonData.length
+        for (let x = 0; totalTxns > x; x++) {
+          const am = jsonData[x]["Amount"].replace(/,/g, '');
+          const fe = jsonData[x]["Fee"].replace(/,/g, '');
+          totalAmount += parseFloat(am);
+          totalFee += parseFloat(fe)
+        }
+        cy.log("Fee:" + totalFee + " Amount " + totalAmount)
+        jpwithdrawal.getJPWithdrawalTotalTransactions().contains(totalTxns)
+        jpwithdrawal.getJPWithdrawalTotalFee().contains("JPY " + formatter.format(totalFee) + ".00")
+        jpwithdrawal.getJPWithdrawalTotalAmount().contains("JPY " + formatter.format(totalAmount) + ".00")
+      });
+    })
+    cy.task('deleteFile', 'cypress/downloads/jpWithdrawalExport.csv').then((message) => {
+      cy.log(message);
+    });
+  })
+
+  it("should Compute all A-Batch transactions and check calculations ", () => {
+    let totalAmount = 0;
+    let totalFee = 0;
+    login.getEmailAddressField().type(emailAddress)
+    login.getPasswordField().type(password)
+    login.getloginButton().click()
+    jpwithdrawal.getFiatTransactions().click()
+    jpwithdrawal.getJPWithdrawals().click()
+    jpwithdrawal.getJPWithdrawalShowFilterMenu().click()
+    jpwithdrawal.getJPWithdrawalSearchFilter().select("Merchant Number").should('have.value', "merchant_number")
+    jpwithdrawal.getJPWithdrawalSearchField().type(JPDepositValidCredentials.stageValidAccountNumber)
+    jpwithdrawal.getJPWithdrawalStatusFilter().select("applying").should('have.value', "applying")
+    jpwithdrawal.getJPWithdrawalAPITypeFilter().select("abatch").should('have.value', "abatch")
+    jpwithdrawal.getJPWithdrawalFilterButton().click()
+    jpwithdrawal.getJPWithdrawalExportButton().click()
+    jpwithdrawal.getJPWithdrawalExportConfirmation().click()
+    cy.wait(5000)
+    cy.task('findAndRenameLatestFile', {
+      directoryPath: 'cypress/downloads',
+      newFileName: 'jpWithdrawalExport.csv'
+    }).then((message) => {
+      cy.log(message);
+      cy.parseCsv('cypress/downloads/jpWithdrawalExport.csv').then((jsonData) => {
+        let totalTxns = jsonData.length
+        for (let x = 0; totalTxns > x; x++) {
+          const am = jsonData[x]["Amount"].replace(/,/g, '');
+          const fe = jsonData[x]["Fee"].replace(/,/g, '');
+          totalAmount += parseFloat(am);
+          totalFee += parseFloat(fe)
+        }
+        cy.log("Fee:" + totalFee + " Amount " + totalAmount)
+        jpwithdrawal.getJPWithdrawalTotalTransactions().contains(totalTxns)
+        jpwithdrawal.getJPWithdrawalTotalFee().contains("JPY " + formatter.format(totalFee) + ".00")
+        jpwithdrawal.getJPWithdrawalTotalAmount().contains("JPY " + formatter.format(totalAmount) + ".00")
+      });
+    })
+    cy.task('deleteFile', 'cypress/downloads/jpWithdrawalExport.csv').then((message) => {
+      cy.log(message);
     });
   })
 
