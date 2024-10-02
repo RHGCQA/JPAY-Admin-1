@@ -171,5 +171,41 @@ class JPWithdrawalTest {
         return cy.get(':nth-child(3) > .form-control')
     }
 
+    getJPWithdrawalDateFromFilter() {
+        return cy.get(':nth-child(6) > :nth-child(1) > .form-control')
+    }
+
+    getJPWithdrawalDateToFilter() {
+        return cy.get(':nth-child(6) > :nth-child(2) > .form-control')
+    }
+
+    getJPWithdrawalCheckAll() {
+        return cy.get('thead > tr > :nth-child(1) > input')
+    }
+
+    getJPWithdrawalUpdateRow() {
+        return cy.get('.row.ml-2 > .d-flex')
+    }
+
+    getJPWithdrawalCompletionYesBtn() {
+        return cy.get(':nth-child(1) > div > .btn-success')
+    }
+
+    getJPWithdrawalSuccessMessage() {
+        return cy.get('.toast')
+    }
+
+    getJPWithdrawalLastPage() {
+        return cy.get(':nth-child(8) > .page-link')
+    }
+
+    getJPWithdrawalGotoPage() {
+        return cy.get('.flex-goto > :nth-child(2) > .form-control')
+    }
+
+    getJPWithdrawalGoBtn() {
+        return cy.get('.flex-goto > :nth-child(3) > .btn')
+    }
+
 }
 module.exports = JPWithdrawalTest

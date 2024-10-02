@@ -46,6 +46,6 @@ module.exports = defineConfig({
     "testRunKey": "j2W9"
   },
   viewportWidth: 2400,
-  viewportHeight: 1200,
+  viewportHeight: 1500,
   defaultCommandTimeout: 10000
 });
